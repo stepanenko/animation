@@ -12,6 +12,6 @@ Source: **LinkedIn Learning**
 Progress: **1/4**
 
 - **Callbacks (done)**
-- Promises
+- Promises (in progress...)
 - Async/Await
 - Web Workers

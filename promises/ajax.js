@@ -7,7 +7,12 @@ let cityName = input.value;
 
 document.addEventListener('DOMContentLoaded', function () {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=` + apiKey;
-  get(url, successHandler, failHandler);
+  get(url)
+    .then(response => {
+      console.log(response);
+      successHandler(response);
+    })
+    .catch(err => failHandler(err));
 });
 
 const getWeatherBtn = document.getElementsByTagName('button')[0];
@@ -15,20 +20,27 @@ getWeatherBtn.addEventListener('click', function () {
   cityName = input.value;
   console.log('Getting weather in ' + cityName);
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=` + apiKey;
-  get(url, successHandler, failHandler);
+  get(url)
+    .then(response => {
+      console.log(response);
+      successHandler(response);
+    })
+    .catch(err => failHandler(err));
 });
 
-function get(url, success, fail) {
-  let httpRequest = new XMLHttpRequest();
-  httpRequest.open('GET', url);
-  httpRequest.onload = function () {
-    if (httpRequest.status === 200) {
-      success(httpRequest.responseText);
-    } else {
-      fail(httpRequest.status);
+function get(url) {
+  return new Promise(function (resolve, reject) {
+    let httpRequest = new XMLHttpRequest();
+    httpRequest.open('GET', url);
+    httpRequest.onload = function () {
+      if (httpRequest.status === 200) {
+        resolve(httpRequest.responseText);
+      } else {
+        reject(httpRequest.status);
+      }
     }
-  }
-  httpRequest.send();
+    httpRequest.send();
+  });
 }
 
 function tempToC(kelvin) {
@@ -52,6 +64,6 @@ function successHandler(data) {
 
 function failHandler(status) {
   const weatherDiv = document.querySelector('#weather');
-  const message = status === 404 ? 'Country or city not found' : 'Some error occured';
+  const message = status === 404 ? 'Country or city not found' : 'Error: Unauthorized';
   weatherDiv.innerHTML = `<h2 class="error">${message}</h2><h3>Status code: ${status}</h3>`;
 }

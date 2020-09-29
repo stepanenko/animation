@@ -1,3 +1,12 @@
-# Animation experiments
 
-[Resource 1](https://blog.teamtreehouse.com/css-sprite-sheet-animations-steps)
+## Asynchronous JS
+
+Course author: **Sasha Vodnik**
+
+Updated: **14.10.2019**
+
+Duration: **01:31:00**
+
+Source: **LinkedIn Learning**
+
+

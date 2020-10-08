@@ -22,10 +22,14 @@ getWeatherBtn.addEventListener('click', function () {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=` + apiKey;
   get(url)
     .then(response => {
-      console.log(response);
       successHandler(response);
     })
-    .catch(err => failHandler(err));
+    .catch(err => failHandler(err))
+    .finally(() => {
+      const finalBlock = document.createElement('h3');
+      finalBlock.innerText = `You requested the weather in ${cityName}`;
+      document.body.appendChild(finalBlock);
+    });
 });
 
 function get(url) {

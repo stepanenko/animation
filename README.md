@@ -13,5 +13,5 @@ Progress: **1/4**
 
 - **Callbacks (done)**
 - **Promises (done)**
-- Async/Await (in progress...)
-- Web Workers
+- **Async/Await (done)**
+- Web Workers (in progress...)

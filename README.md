@@ -9,9 +9,9 @@ Duration: **01:31:00**
 
 Source: **LinkedIn Learning**
 
-Progress: **1/4**
+Progress: **4/4**
 
 - **Callbacks (done)**
 - **Promises (done)**
 - **Async/Await (done)**
-- Web Workers (in progress...)
+- **Web Workers (done)**
